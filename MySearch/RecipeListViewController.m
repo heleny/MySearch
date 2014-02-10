@@ -6,6 +6,9 @@
 //  Copyright (c) 2014 ___FULLUSERNAME___. All rights reserved.
 //
 
+// TODO need to filter thumbnails and preptimes
+// TODO use core data for local storing
+
 #import "RecipeListViewController.h"
 #import "ODRefreshControl.h"
 
