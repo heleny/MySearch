@@ -21,6 +21,8 @@
     UISearchDisplayController *_searchDisplayController;
 //    UIRefreshControl *_refreshControl;
     ODRefreshControl *_refreshControl;
+
+    NSArray *_searchResult;
 }
 
 - (void)viewDidLoad
@@ -32,6 +34,8 @@
     _recipes = [dict objectForKey:@"RecipeName"];
     _thumbnails = [dict objectForKey:@"Thumbnail"];
     _prepTime = [dict objectForKey:@"PrepTime"];
+
+    _searchResult = _recipes;
 
     UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 30.0f)];
     searchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -55,9 +59,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - UITableViewDelegate
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [_recipes count];
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        return [_searchResult count];
+    } else {
+        return [_recipes count];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -67,13 +77,28 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:tableIdentifier];
     }
-    
-    cell.textLabel.text = _recipes[indexPath.row];
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        cell.textLabel.text = _searchResult[indexPath.row];
+    } else {
+        cell.textLabel.text = _recipes[indexPath.row];
+    }
+
     cell.imageView.image = [UIImage imageNamed:_thumbnails[indexPath.row]];
     cell.detailTextLabel.text = _prepTime[indexPath.row];
     
     return cell;
 }
+
+#pragma mark - UISearchDisplayDelegate
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+{
+    [self filterContentForSearchText:searchString scope:[[controller.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
+
+    return YES;
+}
+
+#pragma mark - Selector
 
 //- (void)pullToRefresh:(id)sender
 //{
@@ -87,6 +112,17 @@
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         [refreshControl endRefreshing];
     });
+}
+
+#pragma mark - helper
+
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+{
+    NSPredicate *resultPredicate = [NSPredicate
+                                    predicateWithFormat:@"SELF contains[cd] %@",
+                                    searchText];
+
+    _searchResult = [_recipes filteredArrayUsingPredicate:resultPredicate];
 }
 
 @end
