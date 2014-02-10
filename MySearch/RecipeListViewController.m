@@ -6,16 +6,18 @@
 //  Copyright (c) 2014 ___FULLUSERNAME___. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "RecipeListViewController.h"
 
-@interface ViewController ()
+@interface RecipeListViewController ()
 
 @end
 
-@implementation ViewController {
+@implementation RecipeListViewController {
     NSArray *_recipes;
     NSArray *_thumbnails;
     NSArray *_prepTime;
+
+    UISearchDisplayController *_searchDisplayController;
 }
 
 - (void)viewDidLoad
@@ -27,6 +29,16 @@
     _recipes = [dict objectForKey:@"RecipeName"];
     _thumbnails = [dict objectForKey:@"Thumbnail"];
     _prepTime = [dict objectForKey:@"PrepTime"];
+
+    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 30.0f)];
+    searchBar.tintColor = [UIColor blueColor];
+    _searchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
+    _searchDisplayController.delegate = self;
+    _searchDisplayController.searchResultsDataSource = self;
+    _searchDisplayController.searchResultsDelegate = self;
+
+    self.tableView.backgroundColor = [UIColor redColor];
+    self.tableView.tableHeaderView = searchBar;
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,7 +54,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *tableIdentifier = @"ViewController";
+    static NSString *tableIdentifier = @"RecipeListViewController";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:tableIdentifier];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:tableIdentifier];

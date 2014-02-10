@@ -14,7 +14,7 @@
 		27202AAA18A83CB00059225F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27202AA918A83CB00059225F /* main.m */; };
 		27202AAE18A83CB00059225F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27202AAD18A83CB00059225F /* AppDelegate.m */; };
 		27202AB118A83CB00059225F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27202AAF18A83CB00059225F /* Main.storyboard */; };
-		27202AB418A83CB00059225F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27202AB318A83CB00059225F /* ViewController.m */; };
+		27202AB418A83CB00059225F /* RecipeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27202AB318A83CB00059225F /* RecipeListViewController.m */; };
 		27202AB618A83CB00059225F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27202AB518A83CB00059225F /* Images.xcassets */; };
 		27202ABD18A83CB00059225F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27202ABC18A83CB00059225F /* XCTest.framework */; };
 		27202ABE18A83CB00059225F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27202A9D18A83CB00059225F /* Foundation.framework */; };
@@ -62,8 +62,8 @@
 		27202AAC18A83CB00059225F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		27202AAD18A83CB00059225F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		27202AB018A83CB00059225F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		27202AB218A83CB00059225F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		27202AB318A83CB00059225F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		27202AB218A83CB00059225F /* RecipeListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecipeListViewController.h; sourceTree = "<group>"; };
+		27202AB318A83CB00059225F /* RecipeListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecipeListViewController.m; sourceTree = "<group>"; };
 		27202AB518A83CB00059225F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		27202ABB18A83CB00059225F /* MySearchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MySearchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		27202ABC18A83CB00059225F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -151,8 +151,8 @@
 				27202AAC18A83CB00059225F /* AppDelegate.h */,
 				27202AAD18A83CB00059225F /* AppDelegate.m */,
 				27202AAF18A83CB00059225F /* Main.storyboard */,
-				27202AB218A83CB00059225F /* ViewController.h */,
-				27202AB318A83CB00059225F /* ViewController.m */,
+				27202AB218A83CB00059225F /* RecipeListViewController.h */,
+				27202AB318A83CB00059225F /* RecipeListViewController.m */,
 				27202AB518A83CB00059225F /* Images.xcassets */,
 				27202AA418A83CB00059225F /* Supporting Files */,
 			);
@@ -325,7 +325,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27202AB418A83CB00059225F /* ViewController.m in Sources */,
+				27202AB418A83CB00059225F /* RecipeListViewController.m in Sources */,
 				27202AAE18A83CB00059225F /* AppDelegate.m in Sources */,
 				27202AAA18A83CB00059225F /* main.m in Sources */,
 			);
@@ -532,6 +532,7 @@
 				27202ACE18A83CB00059225F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		27202ACF18A83CB00059225F /* Build configuration list for PBXNativeTarget "MySearchTests" */ = {
 			isa = XCConfigurationList;
@@ -540,6 +541,7 @@
 				27202AD118A83CB00059225F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

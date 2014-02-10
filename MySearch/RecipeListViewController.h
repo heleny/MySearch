@@ -8,6 +8,8 @@
 
 @import UIKit;
 
-@interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface RecipeListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchDisplayDelegate, UISearchBarDelegate>
+
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end
