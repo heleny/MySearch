@@ -18,6 +18,7 @@
     NSArray *_prepTime;
 
     UISearchDisplayController *_searchDisplayController;
+    UIRefreshControl *_refreshControl;
 }
 
 - (void)viewDidLoad
@@ -39,6 +40,13 @@
 
     self.tableView.backgroundColor = [UIColor redColor];
     self.tableView.tableHeaderView = searchBar;
+
+    // Add UIRefreshController
+    UITableViewController *tableViewController = [[UITableViewController alloc] init];
+    tableViewController.tableView = self.tableView;
+    _refreshControl = [UIRefreshControl new];
+    [_refreshControl addTarget:self action:@selector(pullToRefresh:) forControlEvents:UIControlEventValueChanged];
+    tableViewController.refreshControl = _refreshControl;
 }
 
 - (void)didReceiveMemoryWarning
@@ -65,6 +73,11 @@
     cell.detailTextLabel.text = _prepTime[indexPath.row];
     
     return cell;
+}
+
+- (void)pullToRefresh:(id)sender
+{
+    [_refreshControl endRefreshing];
 }
 
 @end
