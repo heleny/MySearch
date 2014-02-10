@@ -86,8 +86,8 @@
         cell.textLabel.text = _recipes[indexPath.row];
     }
 
-    cell.imageView.image = [UIImage imageNamed:_thumbnails[indexPath.row]];
-    cell.detailTextLabel.text = _prepTime[indexPath.row];
+//    cell.imageView.image = [UIImage imageNamed:_thumbnails[indexPath.row]];
+//    cell.detailTextLabel.text = _prepTime[indexPath.row];
     
     return cell;
 }
