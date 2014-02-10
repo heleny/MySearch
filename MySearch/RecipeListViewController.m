@@ -34,6 +34,7 @@
     _prepTime = [dict objectForKey:@"PrepTime"];
 
     UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 30.0f)];
+    searchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     _searchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
     _searchDisplayController.delegate = self;
     _searchDisplayController.searchResultsDataSource = self;

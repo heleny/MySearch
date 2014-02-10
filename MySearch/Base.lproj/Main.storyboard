@@ -29,6 +29,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="568"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="mWj-mU-heq" id="ge2-c9-ej2"/>
                         <outlet property="tableView" destination="jn3-wh-eI7" id="J7l-Bp-FpM"/>
