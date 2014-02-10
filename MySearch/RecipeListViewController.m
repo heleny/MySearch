@@ -7,6 +7,7 @@
 //
 
 #import "RecipeListViewController.h"
+#import "ODRefreshControl.h"
 
 @interface RecipeListViewController ()
 
@@ -18,7 +19,8 @@
     NSArray *_prepTime;
 
     UISearchDisplayController *_searchDisplayController;
-    UIRefreshControl *_refreshControl;
+//    UIRefreshControl *_refreshControl;
+    ODRefreshControl *_refreshControl;
 }
 
 - (void)viewDidLoad
@@ -32,21 +34,18 @@
     _prepTime = [dict objectForKey:@"PrepTime"];
 
     UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 30.0f)];
-    searchBar.tintColor = [UIColor blueColor];
     _searchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
     _searchDisplayController.delegate = self;
     _searchDisplayController.searchResultsDataSource = self;
     _searchDisplayController.searchResultsDelegate = self;
-
-    self.tableView.backgroundColor = [UIColor redColor];
     self.tableView.tableHeaderView = searchBar;
 
     // Add UIRefreshController
     UITableViewController *tableViewController = [[UITableViewController alloc] init];
     tableViewController.tableView = self.tableView;
-    _refreshControl = [UIRefreshControl new];
-    [_refreshControl addTarget:self action:@selector(pullToRefresh:) forControlEvents:UIControlEventValueChanged];
-    tableViewController.refreshControl = _refreshControl;
+//    _refreshControl = [UIRefreshControl new];
+    _refreshControl = [[ODRefreshControl alloc] initInScrollView:self.tableView];
+    [_refreshControl addTarget:self action:@selector(dropViewDidBeginRefreshing:) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)didReceiveMemoryWarning
@@ -75,9 +74,18 @@
     return cell;
 }
 
-- (void)pullToRefresh:(id)sender
+//- (void)pullToRefresh:(id)sender
+//{
+//    [_refreshControl endRefreshing];
+//}
+
+- (void)dropViewDidBeginRefreshing:(ODRefreshControl *)refreshControl
 {
-    [_refreshControl endRefreshing];
+    double delayInSeconds = 3.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [refreshControl endRefreshing];
+    });
 }
 
 @end
