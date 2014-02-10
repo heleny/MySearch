@@ -1,1 +1,10 @@
+PODS:
+  - RZSquaresLoading (1.0)
+
+DEPENDENCIES:
+  - RZSquaresLoading
+
+SPEC CHECKSUMS:
+  RZSquaresLoading: 18758db4c4b607878bf9d37c84c6501f4211ab00
+
 COCOAPODS: 0.29.0
