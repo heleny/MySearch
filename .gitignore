@@ -6,6 +6,6 @@ MySearch.xcodeproj/xcuserdata/helenyang.xcuserdatad/xcschemes/xcschememanagement
 MySearch/Images.xcassets/AppIcon.appiconset/Contents.json
 MySearch/Images.xcassets/LaunchImage.launchimage/Contents.json
 MySearch.xcodeproj/project.xcworkspace/xcuserdata/helenyang.xcuserdatad/WorkspaceSettings.xcsettings
-Pods/*
+Pods*
 MySearch.xcworkspace/xcshareddata/MySearch.xccheckout
 MySearch.xcworkspace/xcuserdata/helenyang.xcuserdatad/UserInterfaceState.xcuserstate
